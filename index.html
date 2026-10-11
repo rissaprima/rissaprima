@@ -93,38 +93,35 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 
 /* journey */
 #journey{padding-top:0;padding-bottom:0}
-.journey-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(42px,6vw,96px);align-items:center;min-height:72vh}
+.journey-grid{
+  display:grid;
+  grid-template-columns:.9fr 1.1fr;
+  gap:clamp(42px,6vw,96px);
+  align-items:stretch;
+}
 .journey-photo{
-  height:min(74vh,720px);
-  min-height:560px;
+  aspect-ratio:9/16;
+  height:auto;
+  min-height:clamp(560px,62vw,760px);
   margin-left:calc((100vw - min(90vw,1140px)) / -2);
 }
 .journey-photo img{
-  object-position:50% 20%;
-  filter:contrast(1.03) saturate(1.1);
-  -webkit-mask-image:
-    linear-gradient(90deg,#000 0%,#000 72%,transparent 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  mask-image:
-    linear-gradient(90deg,#000 0%,#000 72%,transparent 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-composite:intersect;
-  animation:journeyZoom 18s ease-in-out infinite alternate;
+  object-position:50% 10%;
+  transform-origin:50% 18%;
+  filter:brightness(.74) contrast(.84) saturate(.72);
+  opacity:.84;
+  animation:journeySoftZoom 26s ease-in-out infinite alternate;
 }
 .journey-photo::after{
-  -webkit-mask-image:
-    linear-gradient(90deg,#000 0%,#000 72%,transparent 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  mask-image:
-    linear-gradient(90deg,#000 0%,#000 72%,transparent 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-composite:intersect;
-  background:linear-gradient(180deg,rgba(10,10,9,.28) 0%,rgba(10,10,9,.34) 54%,rgba(10,10,9,.74) 100%);
+  background:
+    linear-gradient(90deg,rgba(10,10,9,.16) 0%,rgba(10,10,9,.08) 44%,rgba(10,10,9,.56) 100%),
+    linear-gradient(180deg,rgba(10,10,9,.24) 0%,rgba(10,10,9,.12) 50%,rgba(10,10,9,.84) 100%);
 }
-@keyframes journeyZoom{from{transform:scale(1.11)}to{transform:scale(1.16)}}
-.journey-copy{padding-block:clamp(54px,8vw,100px)}
+@keyframes journeySoftZoom{
+  from{transform:scale(1.02)}
+  to{transform:scale(1.055)}
+}
+.journey-copy{padding-block:clamp(60px,9vw,110px)}
 .journey-copy h2{font-size:clamp(1.6rem,3vw,2.2rem);font-weight:400;line-height:1.25;max-width:460px}
 .journey-copy p{color:var(--muted);max-width:460px;margin-top:18px;line-height:1.85;font-size:14.5px}
 .stat-row{display:flex;gap:40px;margin-top:36px;padding-top:24px;border-top:1px solid var(--line)}
@@ -192,54 +189,47 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 /* mantra */
 .mantra{
   display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:clamp(44px,7vw,110px);
+  grid-template-columns:1fr 1fr;
+  gap:clamp(44px,7vw,100px);
   align-items:center;
   text-align:left;
-  max-width:none;
-  margin:0;
-  min-height:68vh;
 }
 .mantra .lines{
   order:1;
-  max-width:460px;
-  font-size:clamp(1.2rem,2.25vw,1.65rem);
+  max-width:420px;
+  padding-left:clamp(28px,4vw,56px);
+  font-size:clamp(1rem,1.45vw,1.18rem);
   font-weight:300;
-  line-height:1.65;
+  line-height:1.9;
   color:var(--muted);
   letter-spacing:.01em;
 }
 .mantra-photo{
   order:2;
-  height:min(70vh,680px);
-  min-height:520px;
-  margin-right:calc((100vw - min(90vw,1140px)) / -2);
+  justify-self:end;
+  width:min(100%,560px);
+  aspect-ratio:10/11;
+  min-height:clamp(520px,54vw,680px);
 }
 .mantra-photo img{
-  object-position:50% 18%;
-  filter:contrast(1.03) saturate(1.1);
-  -webkit-mask-image:
-    linear-gradient(90deg,transparent 0%,#000 26%,#000 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  mask-image:
-    linear-gradient(90deg,transparent 0%,#000 26%,#000 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-composite:intersect;
-  animation:mantraZoom 18s ease-in-out infinite alternate;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  object-position:56% 14%;
+  transform-origin:56% 18%;
+  filter:brightness(.74) contrast(.84) saturate(.72);
+  opacity:.84;
+  animation:mantraSoftZoom 26s ease-in-out infinite alternate;
 }
 .mantra-photo::after{
-  -webkit-mask-image:
-    linear-gradient(90deg,transparent 0%,#000 26%,#000 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  mask-image:
-    linear-gradient(90deg,transparent 0%,#000 26%,#000 100%),
-    linear-gradient(180deg,transparent 0%,#000 7%,#000 82%,transparent 100%);
-  -webkit-mask-composite:source-in;
-  mask-composite:intersect;
-  background:linear-gradient(180deg,rgba(10,10,9,.28) 0%,rgba(10,10,9,.34) 54%,rgba(10,10,9,.74) 100%);
+  background:
+    linear-gradient(90deg,rgba(10,10,9,.86) 0%,rgba(10,10,9,.22) 28%,rgba(10,10,9,.10) 72%,rgba(10,10,9,.32) 100%),
+    linear-gradient(180deg,rgba(10,10,9,.24) 0%,rgba(10,10,9,.12) 50%,rgba(10,10,9,.84) 100%);
 }
-@keyframes mantraZoom{from{transform:scale(1.10)}to{transform:scale(1.15)}}
+@keyframes mantraSoftZoom{
+  from{transform:scale(1.01)}
+  to{transform:scale(1.04)}
+}
 
 /* contact */
 .contact h2{font-size:clamp(2.2rem,5vw,3.6rem);font-weight:300}
@@ -261,24 +251,59 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 
 @media(max-width:820px){
   .journey-grid,.flagship,.flagship.rev{grid-template-columns:1fr}
-  .journey-grid{min-height:0;gap:18px}
-  .journey-photo{height:58vh;min-height:430px;margin-left:0}
-  .mantra{grid-template-columns:1fr;gap:24px;min-height:0}
-  .mantra .lines{order:1;font-size:1.15rem;max-width:100%}
-  .mantra-photo{order:2;min-height:0;height:58vh;margin-right:0}
+  .journey-grid{gap:22px}
+  .journey-photo{
+    min-height:460px;
+    margin-left:0;
+    margin-right:0;
+    width:100%;
+    aspect-ratio:9/14;
+  }
+  .journey-photo img{
+    object-position:50% 10%;
+    transform-origin:50% 18%;
+  }
+
+  .mantra{
+    grid-template-columns:1fr;
+    gap:22px;
+  }
+  .mantra .lines{
+    order:1;
+    max-width:100%;
+    padding-left:18px;
+    padding-right:18px;
+    font-size:1rem;
+  }
+  .mantra-photo{
+    order:2;
+    justify-self:stretch;
+    width:100%;
+    min-height:460px;
+    aspect-ratio:10/11;
+  }
+  .mantra-photo img{
+    object-position:56% 14%;
+    transform-origin:56% 18%;
+  }
+
   .flagship.rev .fs-visual{order:0}
   .build-grid{grid-template-columns:1fr}
   .venture .vtype{display:none}
   .contact-row{flex-direction:column;align-items:flex-start}
   .contact-actions{align-items:flex-start;width:100%}
-  /* hero photo full-bleed on mobile */
-  .hero-bg img{position:absolute;top:0;right:0;bottom:0;left:0;width:100%;object-fit:cover;object-position:50% 12%;-webkit-mask-image:none;mask-image:none}
-  .hero-bg::after{background:linear-gradient(180deg,rgba(10,10,9,.25) 0%,rgba(10,10,9,.45) 55%,var(--bg) 100%)}
-  /* journey photo full-bleed, same feel as hero */
-  .journey-photo{aspect-ratio:1000/1781;height:auto;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);width:100vw}
-  .journey-photo img{object-position:50% 6%;transform-origin:50% 28%;animation-name:kenburnsM;-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 8%,#000 84%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 8%,#000 84%,transparent 100%)}
-  .journey-photo::after{-webkit-mask-image:linear-gradient(180deg,transparent 0%,#000 8%,#000 84%,transparent 100%);mask-image:linear-gradient(180deg,transparent 0%,#000 8%,#000 84%,transparent 100%);background:linear-gradient(180deg,rgba(10,10,9,.5) 0%,rgba(10,10,9,.34) 40%,rgba(10,10,9,.58) 100%)}
-  @keyframes kenburnsM{from{transform:scale(1)}to{transform:scale(1.035)}}
+
+  .hero-bg img{
+    position:absolute;top:0;right:0;bottom:0;left:0;
+    width:100%;
+    object-fit:cover;
+    object-position:50% 12%;
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .hero-bg::after{
+    background:linear-gradient(180deg,rgba(10,10,9,.25) 0%,rgba(10,10,9,.45) 55%,var(--bg) 100%)
+  }
 }
 </style>
 </head>
