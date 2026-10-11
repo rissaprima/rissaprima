@@ -108,13 +108,13 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 .journey-photo img{
   object-position:50% 11%;
   transform-origin:50% 16%;
-  filter:contrast(1.03) brightness(1.05) saturate(1.2);
-  opacity:.96;
+  filter:contrast(1.02) brightness(1.01) saturate(1.08);
+  opacity:.97;
   -webkit-mask-image:
-    linear-gradient(90deg,#000 0%,#000 61%,rgba(0,0,0,.72) 77%,transparent 100%),
+    linear-gradient(90deg,#000 0%,#000 48%,rgba(0,0,0,.88) 63%,rgba(0,0,0,.58) 76%,transparent 100%),
     linear-gradient(180deg,#000 0%,#000 74%,rgba(0,0,0,.72) 84%,transparent 100%);
   mask-image:
-    linear-gradient(90deg,#000 0%,#000 61%,rgba(0,0,0,.72) 77%,transparent 100%),
+    linear-gradient(90deg,#000 0%,#000 48%,rgba(0,0,0,.88) 63%,rgba(0,0,0,.58) 76%,transparent 100%),
     linear-gradient(180deg,#000 0%,#000 74%,rgba(0,0,0,.72) 84%,transparent 100%);
   -webkit-mask-composite:source-in;
   mask-composite:intersect;
@@ -122,15 +122,15 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 }
 .journey-photo::after{
   -webkit-mask-image:
-    linear-gradient(90deg,#000 0%,#000 61%,rgba(0,0,0,.72) 77%,transparent 100%),
+    linear-gradient(90deg,#000 0%,#000 48%,rgba(0,0,0,.88) 63%,rgba(0,0,0,.58) 76%,transparent 100%),
     linear-gradient(180deg,#000 0%,#000 74%,rgba(0,0,0,.72) 84%,transparent 100%);
   mask-image:
-    linear-gradient(90deg,#000 0%,#000 61%,rgba(0,0,0,.72) 77%,transparent 100%),
+    linear-gradient(90deg,#000 0%,#000 48%,rgba(0,0,0,.88) 63%,rgba(0,0,0,.58) 76%,transparent 100%),
     linear-gradient(180deg,#000 0%,#000 74%,rgba(0,0,0,.72) 84%,transparent 100%);
   -webkit-mask-composite:source-in;
   mask-composite:intersect;
   background:
-    linear-gradient(90deg,rgba(10,10,9,.10) 0%,rgba(10,10,9,.08) 56%,rgba(10,10,9,.34) 76%,rgba(10,10,9,.82) 100%),
+    linear-gradient(90deg,rgba(10,10,9,.06) 0%,rgba(10,10,9,.12) 42%,rgba(10,10,9,.32) 54%,rgba(10,10,9,.58) 68%,rgba(10,10,9,.88) 100%),
     linear-gradient(180deg,rgba(10,10,9,.25) 0%,rgba(10,10,9,.33) 55%,rgba(10,10,9,.90) 100%);
 }
 @keyframes journeySoftZoom{
@@ -243,10 +243,10 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
   object-fit:cover;
   object-position:52% 13%;
   transform-origin:52% 18%;
-  filter:contrast(1.03) brightness(1.05) saturate(1.2);
-  opacity:.96;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.58) 16%,#000 34%,#000 100%);
-  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.58) 16%,#000 34%,#000 100%);
+  filter:contrast(1.02) brightness(1.01) saturate(1.08);
+  opacity:.97;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.46) 14%,rgba(0,0,0,.82) 28%,#000 46%,#000 100%);
+  mask-image:linear-gradient(90deg,transparent 0%,rgba(0,0,0,.46) 14%,rgba(0,0,0,.82) 28%,#000 46%,#000 100%);
   animation:mantraSoftZoom 24s ease-in-out infinite alternate;
 }
 .mantra-photo::after{
@@ -254,17 +254,13 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
   position:absolute;
   inset:0;
   background:
-    linear-gradient(90deg,rgba(10,10,9,.86) 0%,rgba(10,10,9,.40) 14%,rgba(10,10,9,.12) 32%,rgba(10,10,9,.05) 100%),
+    linear-gradient(90deg,rgba(10,10,9,.90) 0%,rgba(10,10,9,.72) 15%,rgba(10,10,9,.44) 28%,rgba(10,10,9,.18) 44%,rgba(10,10,9,.06) 100%),
     linear-gradient(180deg,rgba(10,10,9,.25) 0%,rgba(10,10,9,.33) 55%,rgba(10,10,9,.90) 100%);
   pointer-events:none;
 }
 @keyframes mantraSoftZoom{
   from{transform:scale(1.00)}
   to{transform:scale(1.035)}
-}
-  to{transform:scale(1.06)}
-}
-  to{transform:scale(1.04)}
 }
 
 /* contact */
