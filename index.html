@@ -426,6 +426,22 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 .mline.active{color:var(--text)}
 .mline.fade .tw-live{opacity:0;transition:opacity .6s ease}
 @media (prefers-reduced-motion:reduce){.mantra .lines .qmark{animation:none}}
+
+/* photos: soft breathing fade (in, hold, dim, back) */
+@keyframes breathe{0%{opacity:1}42%{opacity:1;animation-timing-function:ease-in-out}68%{opacity:.55}78%{opacity:.55;animation-timing-function:ease-in-out}100%{opacity:1}}
+@media (prefers-reduced-motion:no-preference){
+  .hero-bg img{animation:heroPhotoIn 1.8s cubic-bezier(.2,.7,.2,1) both,breathe 10s linear 2.4s infinite}
+  .journey-photo.photo-blend img{animation:kenburns 22s ease-in-out infinite alternate,breathe 12s linear 1.2s infinite}
+  .mantra-photo img{animation:mantraSoftZoom 24s ease-in-out infinite alternate,breathe 14s linear .8s infinite}
+}
+
+/* screenshots: back to original after click / return */
+.fs-visual.suppress img,.fs-visual.suppress:hover img{filter:grayscale(1) brightness(.8) contrast(1.05) !important;transform:none !important}
+
+/* nav dropdown: transparent glass */
+.nav-dropdown{background:rgba(10,10,9,.08);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-color:rgba(240,237,230,.22)}
+.nav-dropdown a{color:var(--text);text-shadow:0 1px 8px rgba(0,0,0,.65)}
+.nav-dropdown a:hover{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -616,14 +632,29 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 
 <script>
 (function(){
-  const cards = document.querySelectorAll('.fs-visual');
-  cards.forEach(card => {
-    card.addEventListener('mouseenter', () => card.classList.add('hover-active'));
-    card.addEventListener('mouseleave', () => card.classList.remove('hover-active'));
-    card.addEventListener('touchstart', () => {
-      cards.forEach(el => el.classList.remove('hover-active'));
-    }, {passive:true});
+  var cards=[].slice.call(document.querySelectorAll('.fs-visual'));
+  function reset(c){c.classList.remove('hover-active');}
+  cards.forEach(function(card){
+    card.addEventListener('pointerenter',function(e){
+      if(e.pointerType==='touch')return;
+      if(!card.classList.contains('suppress'))card.classList.add('hover-active');
+    });
+    card.addEventListener('pointerleave',function(e){
+      reset(card);
+      card.classList.remove('suppress');
+    });
+    card.addEventListener('pointerdown',function(e){
+      if(e.pointerType==='touch'){card.classList.remove('suppress');card.classList.add('hover-active');}
+    });
+    card.addEventListener('pointercancel',function(){reset(card);});
+    card.addEventListener('click',function(){
+      reset(card);
+      card.classList.add('suppress');
+    });
   });
+  function clearAll(){cards.forEach(function(c){reset(c);c.classList.add('suppress');});}
+  window.addEventListener('pageshow',function(e){if(e.persisted)clearAll();});
+  document.addEventListener('visibilitychange',function(){if(document.visibilityState==='visible')clearAll();});
 })();
 </script>
 
