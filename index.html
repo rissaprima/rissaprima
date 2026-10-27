@@ -547,7 +547,19 @@ section{position:relative;padding:clamp(60px,9vw,110px) 0;border-bottom:1px soli
 .sm.out .sc{opacity:0;filter:blur(9px);transform:translate(5px,-10px);transition:opacity 1.4s ease var(--o,0s),filter 1.4s ease var(--o,0s),transform 1.7s ease-in var(--o,0s)}
 #awal .mantra .lines .qmark i.gone{opacity:0;filter:blur(6px);animation:none;transition:opacity 1.4s ease,filter 1.4s ease}
 html,body{overflow-x:clip}
-.foot-bio{max-width:560px;line-height:1.7;color:var(--soft);font-size:11px;opacity:.85}
+.foot-bio{max-width:none;line-height:1.7;color:var(--soft);font-size:11px;opacity:.85}
+
+/* flagship copy: same editorial reveal as building + ventures */
+.fs-copy.reveal{opacity:1;transform:none;transition:none;position:relative;padding-top:16px}
+.fs-copy.reveal::before{content:"";position:absolute;left:0;right:0;top:0;height:1px;background:var(--accent);transform:scaleX(0);transform-origin:left;opacity:0}
+.fs-copy.reveal.visible::before{animation:ruleDraw 1.7s cubic-bezier(.2,.7,.2,1) .15s forwards}
+.fs-copy.reveal>*{opacity:0;transform:translateY(14px);clip-path:inset(0 0 100% 0);transition:opacity .8s ease,transform .9s cubic-bezier(.2,.7,.2,1),clip-path .9s cubic-bezier(.2,.7,.2,1);transition-delay:calc(.15s + var(--i,.2s))}
+.fs-copy.reveal.visible>*{opacity:1;transform:none;clip-path:inset(-8px -8px -10px -8px)}
+.fs-copy.reveal>:nth-child(1){--i:.2s}
+.fs-copy.reveal>:nth-child(2){--i:.34s}
+.fs-copy.reveal>:nth-child(3){--i:.48s}
+.fs-copy.reveal>:nth-child(4){--i:.62s}
+@media (prefers-reduced-motion:reduce){.fs-copy.reveal>*{opacity:1;transform:none;clip-path:none;transition:none}.fs-copy.reveal::before{display:none}}
 </style>
 </head>
 <body>
@@ -587,7 +599,7 @@ html,body{overflow-x:clip}
     <div class="journey-copy">
       <div class="eyebrow reveal"><b>01</b> Journey</div>
       <h2 class="reveal">Every chapter changed the view.</h2>
-      <p class="reveal">Events, media, hospitality, property, and startups shaped more than two decades of work. Across different industries, the instinct stayed the same: understand what is not working, rethink the structure, and make it work better.</p>
+      <p class="reveal">From events and agency to hospitality, property, and startups, the experience sharpened the same instinct: seeing what is not working, rethinking the structure, and turning ideas into ventures with purpose.</p>
       <div class="stat-row reveal">
         <div class="stat"><b>20+</b><span>years, still counting</span></div>
         <div class="stat"><b>4</b><span>things I own</span></div>
@@ -924,17 +936,6 @@ html,body{overflow-x:clip}
       setTimeout(function(){requestAnimationFrame(f);},350);
     });
   }
-
-  /* 3. flagship titles: typing reveal */
-  document.querySelectorAll('.fs-copy h3').forEach(function(h){
-    var o=prep(h);
-    whenVisible(h,.6,async function(){
-      await sleep(350);
-      await typeIn(o,42);
-      await sleep(1000);
-      o.live.classList.remove('caret');
-    });
-  });
 
   /* 6. mantra: quote mark + smoky lines, long hold, smoky fade out */
   var box=document.getElementById('mantraLines');
