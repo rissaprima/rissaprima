@@ -998,7 +998,7 @@ html.booting body>:not(#boot),html.booting body>:not(#boot) *{animation-play-sta
 (function(){
   var de=document.documentElement,b=document.getElementById('boot'),t0=Date.now(),seen=false,fin=false;
   try{seen=sessionStorage.getItem('boot')==='1';sessionStorage.setItem('boot','1');}catch(e){}
-  var min=seen?500:2000;
+  var min=2300;
   function done(){
     if(fin)return;fin=true;
     de.classList.remove('booting');
