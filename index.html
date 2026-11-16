@@ -733,6 +733,22 @@ html.booting body>:not(#boot),html.booting body>:not(#boot) *{animation-play-sta
 /* journey photo: show the original as-is, only soft edges (no extra filter / overlay) */
 .journey-photo img{filter:none !important;opacity:1 !important}
 .journey-photo::after{background:none !important}
+
+/* journey + journal photos: same proportions/height as the hero photo (no extra crop) */
+@media(min-width:821px){
+  .journey-grid{align-items:center}
+  .journey-photo{height:auto !important;min-height:0 !important;aspect-ratio:900/1603 !important;max-height:100svh;width:min(calc(100svh*.5614),calc(100% + (100vw - min(90vw,1140px))/2)) !important;justify-self:start}
+  .journey-photo img{object-fit:cover;object-position:50% 8%}
+  .j-me{height:auto !important;aspect-ratio:758/1350 !important;max-height:100svh;width:min(calc(100svh*.5615),calc(100% + (100vw - min(90vw,1140px))/2)) !important;justify-self:end}
+  .j-me img{object-position:50% 8%}
+}
+@media(max-width:820px){
+  .journey-photo{height:100svh !important;aspect-ratio:auto !important;min-height:0 !important}
+  .journey-photo img{object-position:50% 12% !important}
+  .j-me{height:100svh !important;aspect-ratio:auto !important}
+  .j-me img{object-position:50% 12% !important}
+}
+@media (prefers-reduced-motion:no-preference){.j-me img{animation:heroPhotoIn 1.8s cubic-bezier(.2,.7,.2,1) both,breathe 10s linear 2.4s infinite !important}}
 </style>
 </head>
 <body>
